@@ -13,3 +13,5 @@ class TeamscraperItem(scrapy.Item):
     # name = scrapy.Field()
     rebound_ranges = scrapy.Field()
     points_ranges = scrapy.Field()
+    year = scrapy.Field()
+    team = scrapy.Field()
