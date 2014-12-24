@@ -36,35 +36,37 @@ class TeamdataSpider(CrawlSpider):
           player_name_l = cols[1].xpath('.//a/text()').extract()
           rebounds_pgame_l = cols[20].xpath('.//text()').extract()
           points_pgame_l = cols[26].xpath('.//text()').extract()
-          if player_name_l and rebounds_pgame_l and points_pgame_l:
+          if player_name_l:
             player_name = player_name_l[0]
-            rebounds_pgame = float(rebounds_pgame_l[0])
-            points_pgame = float(points_pgame_l[0])
-            #categorize 
-            if rebounds_pgame <= 5:
-              t['rebound_ranges'][0].add(player_name)
-            elif rebounds_pgame <= 10:
-              t['rebound_ranges'][1].add(player_name)
-            elif rebounds_pgame <= 15:
-              t['rebound_ranges'][2].add(player_name)
-            elif rebounds_pgame <= 20:
-              t['rebound_ranges'][3].add(player_name)
-            else:
-              t['rebound_ranges'][4].add(player_name)
-            if points_pgame <= 5:
-              t['points_ranges'][0].add(player_name)
-            elif points_pgame <= 10:
-              t['points_ranges'][1].add(player_name)
-            elif points_pgame <= 15:
-              t['points_ranges'][2].add(player_name)
-            elif points_pgame <= 20:
-              t['points_ranges'][3].add(player_name)
-            elif points_pgame <= 25:
-              t['points_ranges'][4].add(player_name)
-            elif points_pgame <= 30:
-              t['points_ranges'][5].add(player_name)
-            elif points_pgame <= 35:
-              t['points_ranges'][6].add(player_name)
-            else:
-              t['points_ranges'][7].add(player_name)
+            #categorize if field exists 
+            if rebounds_pgame_l:
+              rebounds_pgame = float(rebounds_pgame_l[0])
+              if rebounds_pgame <= 5:
+                t['rebound_ranges'][0].add(player_name)
+              elif rebounds_pgame <= 10:
+                t['rebound_ranges'][1].add(player_name)
+              elif rebounds_pgame <= 15:
+                t['rebound_ranges'][2].add(player_name)
+              elif rebounds_pgame <= 20:
+                t['rebound_ranges'][3].add(player_name)
+              else:
+                t['rebound_ranges'][4].add(player_name)
+            if points_pgame_l:
+              points_pgame = float(points_pgame_l[0])
+              if points_pgame <= 5:
+                t['points_ranges'][0].add(player_name)
+              elif points_pgame <= 10:
+                t['points_ranges'][1].add(player_name)
+              elif points_pgame <= 15:
+                t['points_ranges'][2].add(player_name)
+              elif points_pgame <= 20:
+                t['points_ranges'][3].add(player_name)
+              elif points_pgame <= 25:
+                t['points_ranges'][4].add(player_name)
+              elif points_pgame <= 30:
+                t['points_ranges'][5].add(player_name)
+              elif points_pgame <= 35:
+                t['points_ranges'][6].add(player_name)
+              else:
+                t['points_ranges'][7].add(player_name)
         return t

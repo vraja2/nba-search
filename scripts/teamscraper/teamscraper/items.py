@@ -10,7 +10,6 @@ import scrapy
 
 class TeamscraperItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
     rebound_ranges = scrapy.Field()
     points_ranges = scrapy.Field()
     year = scrapy.Field()
